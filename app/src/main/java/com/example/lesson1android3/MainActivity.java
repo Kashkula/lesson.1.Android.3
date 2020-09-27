@@ -12,29 +12,31 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements OnItemClickListener {
     protected RecyclerView recyclerView;
     protected BookAdapter adapter;
+    protected int position;
     protected ArrayList<Book> list;
+
+    protected String[] names = {"Rahat", "Shantaram", "Everybody",
+            "Baby girl", "Googlebaby", "Talgar",
+            "Sazhi", "Kim kardashyan", "Aze"};
+    protected String[] descriptions = {"Rahat", "Shantaram", "Everybody",
+            "Baby girl", "Googlebaby", "Talgar",
+            "Sazhi", "Kim kardashyan", "Aze"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         recylcerMethod();
-
     }
 
     private void recylcerMethod() {
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recyclerView);
-        list = new ArrayList<>();
-        list.add(new Book("Rahat"));
-        list.add(new Book("Shantaram"));
-        list.add(new Book("Everybody"));
-        list.add(new Book("Baby Girl"));
-        list.add(new Book("Googlebaby"));
-        list.add(new Book("Talgar"));
-        list.add(new Book("Sazhi"));
-        list.add(new Book("Kim kardashyan"));
-        list.add(new Book("Azez"));
+        if (list == null)
+            list = new ArrayList<>();
+        for (int i = 0; i < names.length; i++) {
+            assert list != null;
+            list.add(new Book(names[i], descriptions[i]));
+        }
         adapter = new BookAdapter(list, this, this);
         recyclerView.setAdapter(adapter);
     }
@@ -42,7 +44,10 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
 
     @Override
     public void openActivity(int position) {
-        startActivity(new Intent(this, SecondActivity.class));
+        this.position = position;
+        Intent intent = new Intent(this, SecondActivity.class);
+        intent.putExtra("position", this.position);
+        startActivity(intent);
         Toast.makeText(this, "Succes", Toast.LENGTH_SHORT).show();
     }
 }

@@ -7,8 +7,9 @@ public class Book {
     private String description;
     private ImageView imageBook;
 
-    public Book(String title) {
+    public Book(String title,String description) {
         this.title = title;
+        this.description = description;
     }
 
     public String getTitle() {
