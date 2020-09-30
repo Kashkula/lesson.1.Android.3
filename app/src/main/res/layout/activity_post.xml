@@ -3,10 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
-    tools:context=".SecondActivity">
-
+    android:orientation="vertical"
+    tools:context=".view.PostActivity">
 
     <ImageView
         android:id="@+id/imageBook_secondActivity"
@@ -17,8 +16,8 @@
     <TextView
         android:id="@+id/textTitle_secondActivity"
         android:layout_width="match_parent"
-        android:gravity="center"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="Book" />
 
     <TextView
@@ -27,6 +26,5 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="description" />
-
 
 </LinearLayout>
